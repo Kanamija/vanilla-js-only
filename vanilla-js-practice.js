@@ -31,35 +31,38 @@ class LinkedList {
         if(this.isEmpty()) {
             this.head = node;
         } else {
-          let prev = this.head;  
-          while (prev.next) {
-            prev = prev.next;
-          }
-          prev.next = node;
+            let current = this.head;
+            while (current.next !== null) {
+            // console.log('current inside while loop:', current);
+            current = current.next;
         }
-        this.size++;
+            current.next = node;
+        }
+        // console.log('node:', node);
+        console.log('head:', this.head)
+        this.size++
     }
     print() {
         if(this.isEmpty()) {
             console.log('List is empty');
         } else {
-         let curr = this.head;
-         let listValues = [];
-         while(curr) {
-            listValues.push(curr.value),
-            curr = curr.next;
-            console.log('curr from inside while loop:', curr)
-         }   
-         console.log(listValues.join(' '));
+            let current = this.head;
+            let listValues = '';
+            while(current) {
+                listValues += `${current.value} `;
+                current = current.next;
+            }
+            console.log(listValues);
         }
     }
 }
-
 const list = new LinkedList();
-console.log('List is empty?', list.isEmpty());
-console.log('List size:', list.getSize());
 list.append(10);
-list.append(20);
-list.append(30);
-list.append(40);
 list.print()
+list.append(20);
+list.print()
+
+list.append(30);
+list.print()
+
+
