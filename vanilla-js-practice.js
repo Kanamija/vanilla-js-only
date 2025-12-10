@@ -1,71 +1,58 @@
-class CircularQueue {
-    constructor(capacity) {
-        this.items = new Array(capacity);
-        this.capacity = capacity;
-        this.currentLength = 0;
-        this.rear = -1;
-        this.front = -1;
+class Node {
+    constructor(value) {
+        this.value = value;
+        this.next = null;
     }
-    isFull() {
-        return this.currentLength === this.capacity;
+}
+
+class LinkedList {
+    constructor() {
+        this.head = null;
+        this.size = 0;
     }
     isEmpty() {
-        return this.currentLength === 0;
+        return this.size === 0;
     }
-    enqueue(element) {
-        if(!this.isFull()) {
-            this.rear = (this.rear++) % this.capacity;
-            this.items[this.rear] = element;
-            this.currentLength++;
-            if (this.front === -1) {
-                this.front = this.rear;
-            }
-        }
-
+    getSize() {
+        return this.size;
     }
-    dequeue() {
+    prepend(value) {
+        const node = new Node(value);
         if(this.isEmpty()) {
-            return null
-        } 
-        const item = this.items[this.front];
-        this.items[this.front] = null;
-        this.front = (this.front++) % this.capacity;
-        this.currentLength--
-        if(this.isEmpty()) {
-            this.front = -1;
-            this.rear = -1;
+            this.head = node;
+        } else {
+            node.next = this.head;
+            this.head = node;
         }
-        return item;
-    }
-    peek() {
-        if(!this.isEmpty()) {
-            return this.items[this.front];
-        }
-        return null;
+        this.size++;
     }
     print() {
         if(this.isEmpty()) {
-            console.log('Queue is empty');
+            console.log('List is empty');
         } else {
-            let i; 
-            let str = '';
-            for (i = this.front; i !== this.rear; i = (i +1) % this.capacity) {
-                str += this.items[i] + " "
-            }
-            str += this.items[i];
-            console.log(str);
+         let curr = this.head;
+         let listValues = [];
+         while(curr) {
+            listValues.push(curr.value),
+            curr = curr.next;
+            // console.log('curr from inside while loop:', curr)
+         }   
+         console.log(listValues.join(' '));
         }
     }
 }
 
-const queue = new CircularQueue(5);
-console.log(queue.isEmpty());
-queue.enqueue(10)
-queue.enqueue(20)
-queue.enqueue(30)
-queue.enqueue(40)
-queue.enqueue(50)
-console.log(queue.isFull())
-queue.print()
-console.log(queue.dequeue());
-console.log(queue.peek());
+const list = new LinkedList();
+console.log('List is empty?', list.isEmpty());
+console.log('List size:', list.getSize());
+list.prepend(10);
+list.prepend(20);
+list.prepend(30);
+list.prepend(40);
+list.prepend(50);
+list.prepend(60);
+list.prepend(70);
+list.prepend(80);
+list.prepend(90);
+list.prepend(100);
+list.print()
