@@ -1,45 +1,31 @@
 class Node {
-    constructor(value) {
-        this.value = value;
-        this.left = null;
-        this.right = null;
-    }
+  constructor(val) {
+    this.val = val;
+    this.left = null;
+    this.right = null;
+  }
 }
 
-class BinarySearchTree {
-    constructor() {
-        this.root = null;
-    }
-    isEmpty() {
-        return this.root === null;
-    }
-    insert(value) {
-        const newNode = new Node(value);
-        if(this.isEmpty()) {
-            this.root = newNode;
-        } else {
-            this.insertNode(this.root, newNode)
-        }
-    }
-    insertNode(root, newNode ) {
-        if(newNode.value < root.value) {
-            if(root.left === null) {
-                root.left = newNode;
-            } else {
-                this.insertNode(root.left, new Node);
-            }
-        } else {
-            if(root.right === null) {
-                root.right = newNode;
-            } else {
-                this.insertNode(root.right, newNode);
-            }
-        }
-    }
-}
+const a = new Node('a');
+const b = new Node('b');
+const c = new Node('c');
+const d = new Node('d');
+const e = new Node('e');
+const f = new Node('f');
 
-const bst = new BinarySearchTree()
-console.log('Tree is Empty?', bst.isEmpty());
-bst.insert(10);
-bst.insert(5);
-bst(15);
+a.left = b;
+a.right = c;
+b.left = d;
+b.right = e;
+c.right = f;
+
+const depthFirstValues = (root) => {
+  if (root === null)
+    return [];
+  
+  const leftValues = depthFirstValues(root.left);
+  const rightValues = depthFirstValues(root.right);
+  return [ root.val, ...leftValues, ...rightValues ];
+};
+
+console.log(depthFirstValues(a));
