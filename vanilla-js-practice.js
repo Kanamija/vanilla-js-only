@@ -1,143 +1,45 @@
 class Node {
     constructor(value) {
         this.value = value;
-        this.next = null;
+        this.left = null;
+        this.right = null;
     }
 }
 
-class LinkedList {
+class BinarySearchTree {
     constructor() {
-        this.head = null;
-        this.size = 0;
+        this.root = null;
     }
     isEmpty() {
-        return this.size === 0;
+        return this.root === null;
     }
-    getSize() {
-        return this.size;
+    insert(value) {
+        const newNode = new Node(value);
+        if(this.isEmpty()) {
+            this.root = newNode;
+        } else {
+            this.insertNode(this.root, newNode)
+        }
     }
-    prepend(value) {
-        const node = new Node(value);
-        if(this.isEmpty()) {
-            this.head = node;
-        } else {
-            node.next = this.head;
-            this.head = node;
-        }
-        this.size++;
-    }
-    insert(value, index) {
-        if (index < 0 || index > this.size) {
-            console.log('Please enter a valid index')
-            return;
-        }
-        if (index === 0) {
-            this.prepend(value);
-        } else {
-            const node = new Node(value);
-            let current = this.head;
-            for(let i = 0; i < index - 1; i++) {
-                current = current.next;
+    insertNode(root, newNode ) {
+        if(newNode.value < root.value) {
+            if(root.left === null) {
+                root.left = newNode;
+            } else {
+                this.insertNode(root.left, new Node);
             }
-            node.next = current.next;
-            current.next = node;
-            this.size++;
-        }
-        }
-    removeFrom(index) {
-        if (index < 0 || index >= this.size) {
-            return null;
-        }
-        let removedNode;
-        if (index === 0) {
-            removedNode = this.head;
-            this.head = this.head.next;
         } else {
-            let current = this.head;
-            for (let i = 0; i < index - 1; i++) {
-                current = current.next;
+            if(root.right === null) {
+                root.right = newNode;
+            } else {
+                this.insertNode(root.right, newNode);
             }
-            removedNode = current.next;
-            current.next = removedNode.next;
-        }
-        this.size--
-        return removedNode.value;
-      }
-      removeValue(value) {
-        if(this.isEmpty()) {
-            return null;
-        } 
-        if(this.head.value === value) {
-            this.head = this.head.next;
-            this.size--
-            return value; 
-        } else {
-            let current = this.head;
-            while (current.next !== null && current.next.value !== value) {
-                current = current.next;
-            }
-            if (current.next) {
-                const removedNode = current.next;
-                current.next = removedNode.next;
-                this.size--;
-                return value
-            }
-            return null;
-        }
-      }  
-    append(value) {
-        const node = new Node(value);
-        if(this.isEmpty()) {
-            this.head = node;
-        } else {
-            let current = this.head;
-            while (current.next !== null) {
-            // console.log('current inside while loop:', current);
-            current = current.next;
-        }
-            current.next = node;
-        }
-        // console.log('node:', node);
-        console.log('head:', this.head)
-        this.size++
-    }
-    print() {
-        if(this.isEmpty()) {
-            console.log('List is empty');
-        } else {
-            let current = this.head;
-            let listValues = '';
-            while(current) {
-                listValues += `${current.value} `;
-                current = current.next;
-            }
-            console.log(listValues);
         }
     }
 }
-const list = new LinkedList();
-console.log('List is empty?', list.isEmpty());
-console.log('List size ', list.getSize());
-// list.print();
 
-list.insert(10, 0);
-// list.print();
-
-list.insert(20, 0);
-// list.print();
-
-list.insert(30, 1);
-// list.print();
-
-list.insert(40, 2);
-// list.print();
-// // console.log(list.getSize());
-
-console.log(list.removeValue(40));
-list.print()
-
-console.log(list.removeValue(20));
-list.print()
-
-console.log(list.removeValue(60));
-list.print()
+const bst = new BinarySearchTree()
+console.log('Tree is Empty?', bst.isEmpty());
+bst.insert(10);
+bst.insert(5);
+bst(15);
