@@ -91,21 +91,62 @@ class LinkedList {
         console.log('Tail remains:', this.tail.value);
 
     }
+    removeLast() {
+        console.log('---removeLast called---');
+
+        //Case 1: empty list
+        if (this.head === null) {
+            console.log('List is empty. Nothing to remove.');
+            return;
+        }
+
+        //Case 2: only one node
+        if (this.head === this.tail) {
+            console.log('Removing the only node:', this.head.value);
+            this.head = null;
+            this.tail = null;
+            return;
+        }
+
+        //Case 3: multiple nodes
+        let current = this.head;
+
+        console.log('Starting traversal from head:', current.value);
+
+        while(current.next !== this.tail) {
+            console.log('Visiting node:', current.value);
+            current = current.next
+
+        }
+        console.log('Node before tail foind:', current.value);
+        console.log('Removing tail:', this.tail.value);
+        current.next = null;
+        this.tail = current;
+
+        console.log('New tail is:', this.tail.value);
+    }
 }
 
 const list = new LinkedList();
 
 
 
-list.append(10);
-list.append(20);
-list.append(30);
+// list.append(10);
+// list.append(20);
+// list.append(30);
 
-list.removeFirst()
-list.removeFirst()
-list.removeFirst()
-list.removeFirst()
+// list.removeFirst()
+// list.removeFirst()
+// list.removeFirst()
+// list.removeFirst()
 
 list.prepend(10);
 list.prepend(20);
 list.prepend(30);
+
+list.removeLast();
+list.removeLast();
+list.removeLast();
+list.removeLast();
+
+
