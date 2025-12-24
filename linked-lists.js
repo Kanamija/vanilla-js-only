@@ -131,22 +131,22 @@ const list = new LinkedList();
 
 
 
-list.append(10);
-list.append(20);
-list.append(30);
+// list.append(10);
+// list.append(20);
+// list.append(30);
 
-list.removeFirst()
-list.removeFirst()
-list.removeFirst()
-list.removeFirst()
+// list.removeFirst()
+// list.removeFirst()
+// list.removeFirst()
+// list.removeFirst()
 
-// list.prepend(10);
-// list.prepend(20);
-// list.prepend(30);
+list.prepend(10);
+list.prepend(20);
+list.prepend(30);
 
-// list.removeLast();
-// list.removeLast();
-// list.removeLast();
-// list.removeLast();
+list.removeLast();
+list.removeLast();
+list.removeLast();
+list.removeLast();
 
 
