@@ -125,6 +125,16 @@ class LinkedList {
 
         console.log('New tail is:', this.tail.value);
     }
+     contains(searchValue) {
+    let current = this.head;
+
+    while (current) {
+      if (current.value === searchValue) return true;
+      current = current.next;
+    }
+
+    return false;
+  }
 }
 
 const list = new LinkedList();
@@ -135,10 +145,12 @@ list.append(10);
 list.append(20);
 list.append(30);
 
-list.removeFirst()
-list.removeFirst()
-list.removeFirst()
-list.removeFirst()
+console.log(list.contains(40))
+
+// list.removeFirst()
+// list.removeFirst()
+// list.removeFirst()
+// list.removeFirst()
 
 // list.prepend(10);
 // list.prepend(20);
