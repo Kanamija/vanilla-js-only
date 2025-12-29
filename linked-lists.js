@@ -147,18 +147,18 @@ list.append(30);
 
 console.log(list.contains(40))
 
-// list.removeFirst()
-// list.removeFirst()
-// list.removeFirst()
-// list.removeFirst()
+list.removeFirst()
+list.removeFirst()
+list.removeFirst()
+list.removeFirst()
 
-// list.prepend(10);
-// list.prepend(20);
-// list.prepend(30);
+list.prepend(10);
+list.prepend(20);
+list.prepend(30);
 
-// list.removeLast();
-// list.removeLast();
-// list.removeLast();
-// list.removeLast();
+list.removeLast();
+list.removeLast();
+list.removeLast();
+list.removeLast();
 
 
