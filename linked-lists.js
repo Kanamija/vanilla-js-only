@@ -125,7 +125,7 @@ class LinkedList {
 
         console.log('New tail is:', this.tail.value);
     }
-     contains(searchValue) {
+    contains(searchValue) {
     let current = this.head;
 
     while (current) {
@@ -135,6 +135,33 @@ class LinkedList {
 
     return false;
   }
+   insert(value, position) {
+    if (position === null || position <= 0 || !this.head) {
+      this.prepend(value);
+      return;
+    }
+
+    const newNode = new ListNode(value);
+    let current = this.head;
+    let previous = null;
+    let index = 0;
+
+    while (current && index < position) {
+      previous = current;
+      current = current.next;
+      index++;
+    }
+
+    if (previous) {
+      previous.next = newNode;
+      newNode.next = current;
+
+      if (!current) {
+        this.tail = newNode; // update tail if we added to the end
+      }
+    }
+  }
+
 }
 
 const list = new LinkedList();
