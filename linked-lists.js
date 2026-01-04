@@ -161,6 +161,33 @@ class LinkedList {
       }
     }
   }
+   // BONUS: remove first occurrence of value from list
+  removeItem(value) {
+    if (!this.head) return false;
+
+    if (this.head.value === value) {
+      this.head = this.head.next;
+      if (!this.head) this.tail = null;
+      return true;
+    }
+
+    let current = this.head.next;
+    let previous = this.head;
+
+    while (current) {
+      if (current.value === value) {
+        previous.next = current.next;
+        if (!current.next) this.tail = previous;
+        return true;
+      }
+
+      previous = current;
+      current = current.next;
+    }
+
+    return false;
+  }
+
 
 }
 
