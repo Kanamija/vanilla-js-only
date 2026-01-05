@@ -221,9 +221,49 @@ class LinkedList {
     return false;
   }
 
-    // BONUS: remove element at specified position in list
-  removePosition(position) {}
+    // Remove node at specified position in list
+  removePosition(position) {
+    // If the position is invalid or the list is empty,
+    // there is nothing to remove
+  if (position === null || position < 0 || !this.head) {
+    return false;
+  }
+   // If we are removing the head node (position 0),
+  // move head to the next node
+  if (position === 0) {
+    this.head = this.head.next;
 
+    // If the list is now empty, update the tail
+    if (!this.head) {
+      this.tail = null;
+    }
+
+    return true;
+  }
+  // Start from the head and walk to the desired position
+  let current = this.head;
+  let previous = null;
+  let index = 0;
+
+  while (current && index < position) {
+    previous = current;
+    current = current.next;
+    index++;
+  }
+
+  // If current is null, the position was out of bounds
+  if (!current) return false;
+
+  // Remove the node by skipping over it
+  previous.next = current.next;
+
+    // If we removed the last node, update the tail
+  if (!current.next) {
+    this.tail = previous;
+  }
+
+  return true;
+}
 
 }
 
