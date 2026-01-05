@@ -135,7 +135,17 @@ class LinkedList {
 
     return false;
   }
+  //Insert a node at a given index (0-based)
+
    insert(value, position) {
+
+      // If the position is null, zero, or negative,
+  // OR if the list is empty,
+  // there is no valid "middle" to insert into.
+  // In all of these cases, inserting at the beginning
+  // is the safest and most predictable behavior,
+  // so we reuse the prepend method instead of duplicating logic.
+
     if (position === null || position <= 0 || !this.head) {
       this.prepend(value);
       return;
@@ -146,47 +156,73 @@ class LinkedList {
     let previous = null;
     let index = 0;
 
+    // Walk through the list until we reach the desired position
+  // or until we run out of nodes
     while (current && index < position) {
       previous = current;
       current = current.next;
       index++;
     }
-
+     // If previous exists, we have a valid node to insert after
     if (previous) {
+    // Link the new node into the list
       previous.next = newNode;
       newNode.next = current;
 
+     // If current is null, we inserted at the end of the list,
+    // so we need to update the tail reference
       if (!current) {
-        this.tail = newNode; // update tail if we added to the end
+        this.tail = newNode; 
       }
     }
   }
-   // BONUS: remove first occurrence of value from list
-  removeItem(value) {
+   // Remove first occurrence of value from list
+   // Returns true if a node was actually removed.
+  // Returns false if the value was not found (list stays unchanged).
+
+    removeItem(value) {
+    // If the list is empty, there is nothing to remove
     if (!this.head) return false;
 
+     // If the value is in the head node,
+  // remove it by moving head to the next node
     if (this.head.value === value) {
       this.head = this.head.next;
       if (!this.head) this.tail = null;
       return true;
+    // As soon as we remove one node, we return true.
+  // We only remove the FIRST occurrence, so we stop searching.
     }
-
+    // Start checking from the second node,
+    // keeping track of the node before it
     let current = this.head.next;
     let previous = this.head;
 
+  // Traverse the list until we either find the value
+  // or reach the end of the list
     while (current) {
+      // If we find the node with the matching value
       if (current.value === value) {
+        // Remove the node by skipping over it
         previous.next = current.next;
+        // If we removed the last node,
+      // update the tail to the previous node
         if (!current.next) this.tail = previous;
         return true;
       }
 
+       // Move both pointers forward and continue searching
       previous = current;
       current = current.next;
     }
 
+  // If we reached the end without finding the value,
+  // nothing was removed
     return false;
   }
+
+    // BONUS: remove element at specified position in list
+  removePosition(position) {}
 
 
 }
