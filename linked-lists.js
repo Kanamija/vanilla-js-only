@@ -151,7 +151,7 @@ class LinkedList {
       return;
     }
 
-    const newNode = new ListNode(value);
+    const newNode = new Node(value);
     let current = this.head;
     let previous = null;
     let index = 0;
