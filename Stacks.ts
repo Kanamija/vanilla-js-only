@@ -45,5 +45,6 @@ const numberStack = new StackClass<number>();
 numberStack.push(10);
 numberStack.push(20);
 numberStack.push(30);
+numberStack.pop();
 
 console.log(numberStack.storage)

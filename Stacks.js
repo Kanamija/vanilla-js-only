@@ -35,4 +35,5 @@ var numberStack = new StackClass();
 numberStack.push(10);
 numberStack.push(20);
 numberStack.push(30);
+numberStack.pop();
 console.log(numberStack.storage);

@@ -35,9 +35,5 @@ exports.Queue = Queue;
 var numberQueue = new Queue();
 numberQueue.enqueue(10);
 numberQueue.enqueue(5);
-// numberQueue.enqueue("hi"); // ❌ TypeScript error (good!)
-console.log(numberQueue.dequeue()); // number | undefined
-var stringQueue = new Queue();
-stringQueue.enqueue("a");
-stringQueue.enqueue("b");
-console.log(stringQueue.peek()); // string | undefined
+numberQueue.dequeue();
+console.log(numberQueue.storage);

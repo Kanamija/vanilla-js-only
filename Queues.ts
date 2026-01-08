@@ -35,12 +35,14 @@ class Queue<T> {
 const numberQueue = new Queue<number>();
 numberQueue.enqueue(10);
 numberQueue.enqueue(5);
+numberQueue.dequeue()
+console.log(numberQueue.storage)
 // numberQueue.enqueue("hi"); // ❌ TypeScript error (good!)
-console.log(numberQueue.dequeue()); // number | undefined
+// console.log(numberQueue.dequeue()); // number | undefined
 
-const stringQueue = new Queue<string>();
-stringQueue.enqueue("a");
-stringQueue.enqueue("b");
-console.log(stringQueue.peek()); // string | undefined
+// const stringQueue = new Queue<string>();
+// stringQueue.enqueue("a");
+// stringQueue.enqueue("b");
+// console.log(stringQueue.peek()); // string | undefined
 
 export { Queue };
