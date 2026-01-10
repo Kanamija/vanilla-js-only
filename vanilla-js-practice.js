@@ -29,3 +29,4 @@ const depthFirstValues = (root) => {
 };
 
 console.log(depthFirstValues(a));
+console.log(depthFirstValues(a));
